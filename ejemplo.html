@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comentarios - Taller de Metal</title>
+  <link rel="stylesheet" href="ejemplo.css">
+</head>
+<body>
+  <div class="comments-container">
+    <h2>Comentarios del Taller</h2>
+    <div class="comment-box">
+      <input type="text" placeholder="Tu nombre" id="name" />
+      <textarea placeholder="Escribe tu comentario aquí..." id="comment"></textarea>
+      <button onclick="addComment()">Publicar</button>
+    </div>
+    <div class="comments-display" id="comments-display">
+      <div class="comment">Gran taller, me gusto mucho su trabajo. - Roberto Leon</div>
+      <div class="comment">El ambiente es muy motivador y profesional. - Ana</div>
+    </div>
+  </div>
+
+  <script>
+    function addComment() {
+      const nameInput = document.getElementById("name");
+      const commentInput = document.getElementById("comment");
+      const commentsDisplay = document.getElementById("comments-display");
+
+      if (nameInput.value.trim() && commentInput.value.trim()) {
+        const newComment = document.createElement("div");
+        newComment.className = "comment";
+        newComment.textContent = `${commentInput.value} - ${nameInput.value}`;
+
+        commentsDisplay.appendChild(newComment);
+        commentInput.value = ""; // Clear the textarea
+        nameInput.value = ""; // Clear the name input
+      } else {
+        alert("Por favor, completa tu nombre y comentario.");
+      }
+    }
+  </script>
+</body>
+</html>
+
